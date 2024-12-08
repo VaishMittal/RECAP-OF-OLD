@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocForGithub</title>
+</head>
+<body>
+    <h1>Github Account</h1>
+    <div id="box1">
+        <h2>Your details will show here</h2>
+    </div>
+    <button id="btn">Search</button>
+</body>
+<script>
+    function getData(){
+        fetch( "https://api.github.com/users/VaishMittal").then((data)=>{
+           const data1 =  data.json();
+            return data1;
+        }).then((data)=>{
+            console.log(data)
+            const box=document.getElementById("box1");
+            box.innerHTML=`
+            <p><strong>Username:</strong> ${data.login}</p>
+            <p><strong>ID:</strong> ${data.id}</p>
+            <p><strong>Avatar:</strong> <img src="${data.avatar_url}" alt="Avatar" width="300"></p>
+            <p><strong>Repositories URL:</strong> <a href="${data.repos_url}" target="_blank">${data.repos_url}</a></p>
+          `;
+            // <p>data.id</p>
+        })
+    }
+    document.getElementById("btn").onclick=getData
+</script>
+</html>

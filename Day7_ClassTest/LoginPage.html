@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <link href="Login.css" rel="stylesheet">
+</head>
+<body>
+    <form action="CurrencyConverter.html" onsubmit="return validate()">
+        <label for="uname">Login :</label>
+        <input id="uname" class="inp1" placeholder="enter your User Id"/>
+        <br>
+        <br>
+        <label for="pass">Password :</label>
+        <input id="pass"  class="inp1"  placeholder="enter your Password"/>
+        <br>
+        <br>
+        <button type="submit" >Submit</button> 
+        <input type="reset"/>
+    </form>
+    
+</body>
+<script>
+    function validate(){
+       if( document.getElementById("uname").value==""){
+        alert("enter your username");
+        return false;
+       }
+       else if( document.getElementById("pass").value=="" || document.getElementById("pass").value.length<5){
+        alert("enter your password and it's length should be greater than 5");
+        return false;
+       }
+        return true;
+    
+    }
+
+</script>
+</html>

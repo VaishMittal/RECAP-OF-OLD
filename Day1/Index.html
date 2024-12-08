@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+    <!-- tr>td*2 for 2 cols in a row --> 
+    <table border="2px">
+
+        <form>
+            <tr>
+                <td colspan="2" id="heading" >Registration Form</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" placeholder="Enter Your Name" required> </td>
+            </tr>
+            <tr>
+                <td>Email Id</td>
+                <td> <input type="email" name="t1" id=""></td>
+            </tr>
+            <tr>
+                <td>Date Of Birth</td>
+                <td><input type="date" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td> <textarea name="" id="" rows="3" cols="20" > </textarea></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td> <input type="password" name="p1" id=""></td>
+            </tr>
+            <tr>
+                <td>Branch</td>
+                <td> 
+                    CSE<input type="radio" name="b1" id="" value="cse">
+                    IT<input type="radio" name="b1" id="" value="it">
+                    CE<input type="radio" name="b1" id="" value="ce">
+                </td>
+            </tr>
+            <tr>
+                <td>Languages</td>
+                <td> 
+                    C++<input type="checkbox" name="a" id="" value="c++">
+                    JAVA<input type="checkbox" name="b" id="" value="java">
+                    PYTHON<input type="checkbox" name="c" id="" value="python">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Upload Profile Picture</td>
+                <td><input type="file" name="" id=""> </td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td> 
+                    <select value="">
+                        <option name="" id="" value="delhi" >Delhi</option>
+                        <option name="" id="" value="gzb" selected >Ghaziabad</option>
+                        <option name="" id="" value="noida" >Noida</option>
+                    </select>
+              
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Register"></td>
+                <td> <input type="reset" value="clear"></td>
+            </tr>
+             
+        </form>
+    </table>
+</div>
+</body>
+</html>
+
+<!-- in checkbox name should diofferent and in radio it should same and what we write in value is the actual value that is fetch on the server
+  and  normally it just for display which we write before the input tags
+  
+  we use sekected in options to make it by default-->

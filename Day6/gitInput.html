@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocForGithub</title>
+</head>
+<body>
+    <h1>Github Account</h1>
+    <label for="uname">Enter Github Username:</label>
+    <input type="text" id="uname" placeholder="enter your username"/>
+    <button id="btn">Search</button>
+    <div id="box1"></div>
+
+</body>
+<script>
+    function getData(){
+
+        const username=document.getElementById("uname").value;
+        if (username){
+            fetch( `https://api.github.com/users/${username}`).then((data)=>{
+           const data1 =  data.json();
+            return data1;
+        }).then((data)=>{
+            console.log(data)
+            const box=document.getElementById("box1");
+            box.innerHTML=`
+            <p><strong>Username:</strong> ${data.login}</p>
+            <p><strong>ID:</strong> ${data.id}</p>
+            <p><strong>Avatar:</strong> <img src="${data.avatar_url}" alt="Avatar" width="300"></p>
+            <p><strong>Repositories URL:</strong> <a href="${data.repos_url}" target="_blank">${data.repos_url}</a></p>
+          `;
+        })
+        }else{
+            document.getElementById("box1").innerHTML="please enter a username"
+        }
+    
+    }
+    document.getElementById("btn").onclick=getData
+</script>
+</html>

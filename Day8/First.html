@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React-DOM</title>
+</head>
+<body>
+    <div id="parent"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const parent=document.getElementById("parent");
+        const root=ReactDOM.createRoot(parent);
+        const h1=<h1>hello people</h1>
+        const i1=<li>bikes</li>
+        const i2=<li>cars</li>
+        const ul=<ul>{i1}{i2}</ul>
+        const container=<div> {h1}{ul}</div>
+        root.render(container)
+       
+        // const h1 =React.createElement("h1",{},"hello, world!");
+        // // root.render(h1);
+        // const item1=React.createElement("li",{},"orange");
+        // const item2=React.createElement("li",{},"grapes"); 
+        // const ul=React.createElement("ul",{},item1,item2);   
+        // root.render([h1,ul]);
+        //there can be only one render
+
+        
+        // const h2=document.createElement("h2");
+        // h2.innerHTML="welcome to react";
+        // parent.appendChild(h2);
+        // const list=document.createElement("ul");
+        // const element1=document.createElement("li");
+        // const element2=document.createElement("li");
+        // element1.innerHTML="apple";
+        // element2.innerHTML="banana";
+
+        // list.appendChild(element1);
+        // list.appendChild(element2);
+        // parent.appendChild(list);
+     </script>
+</body>
+</html>

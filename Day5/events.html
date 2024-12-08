@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="btn">Click me!</button>
+    <p id="clickmsg"></p>
+
+    <label for="nameinp">Name:</label>
+    <input type="text" id="nameinp" placeholder="enter Your Name">
+    <p id="focusInput"></p>
+
+    <label for="selCol">Select a color:</label>
+    <select id="selCol">
+        <option value="">Choose</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+
+    </select>
+    <p id="opt"></p>
+
+    <label for="typeinp">Name:</label>
+    <input type="text" id="typeinp" placeholder="start typing...">
+    <p id="focustype"></p> -->
+ <label for="selCol">Select a color:</label>
+    <select id="selCol">
+        <option value="">Choose</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+
+    </select>
+    <p id="opt"></p>
+
+
+</body>
+<script>
+      let div =document.createElement('div');
+      div.style.border="2px solid blue"
+
+
+    let h2 =document.createElement('h2');
+    h2.textContent="Events Handler"
+
+    let button =document.createElement('button');
+    button.textContent="Click Me!"
+    button.id ="btn"
+
+    
+
+    document.body.appendChild(div)
+    div.appendChild(h2)
+    div.appendChild(button)
+
+
+
+
+    let p =document.createElement('p');
+    p.id="clickmsg"
+    div.appendChild(p)
+    
+
+
+      document.getElementById("btn").onclick=function(){
+        document.getElementById("clickmsg").innerHTML="button is clciked"
+    }
+
+    document.getElementById("nameinp").onfocus=function(){
+        document.getElementById("focusInput").innerHTML="input field is focused"
+    }
+    document.getElementById("nameinp").onblur=function(){
+        document.getElementById("focusInput").innerHTML="input field focus is lost"
+    }
+
+    document.getElementById("selcol").onchange=function(){
+        let selectedColor=this.value;
+        document.getElementById('opt').innerText = "You selected: " + selectedColor;
+
+    }
+
+    document.getElementById("typeinp").onclick=function(){
+        document.getElementById("focustype").innerHTML="write something"
+    }
+</script>
+</html>

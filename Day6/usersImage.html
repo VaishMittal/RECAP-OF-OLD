@@ -1,0 +1,76 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        background-color: #c1d292;
+      }
+      #imgbox {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .box2 {
+        width: 20%;
+        border: 3px solid #63811e;
+        padding: 0rem 1rem 0rem 1rem;
+        border-radius: 8px;
+        background-color: #e1fab6;
+      }
+      .box2 img {
+        width: 100%;
+        border-radius:8px ;
+        box-shadow: 0px 4px 40px rgb(16, 12, 16);
+      }
+      .box2 h2{
+        text-align: center;
+      }
+      #btn{
+        font-size: 1.5rem;
+        padding: 10px;
+        background-color: #647830;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgb(73, 73, 73);
+
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center; text-decoration: underline;font-size: 3rem;">Images of First 30 Users of GitHub</h2>
+    <button id="btn">search</button>
+    <div id="imgbox"></div>
+  </body>
+  <script>
+    let url = "https://api.github.com/users";
+    fetch(url)
+      .then((response) => {
+        const data = response.json();
+        console.log(data);
+        return data;
+      })
+      .then((data) => {
+        function getData() {
+          const div1 = document.getElementById("imgbox");
+          div1.innerHTML = "";
+
+          for (let i = 0; i < 30; i++) {
+            let div2 = document.createElement("div");
+            div2.className = "box2";
+            div2.innerHTML = `
+            <p><img src="${data[i].avatar_url}" alt="Avatar" width="100"></p>
+            <h2>${data[i].login}</h2>`;
+            div1.appendChild(div2);
+          }
+        }
+        document.getElementById("btn").onclick = getData;
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Search</button>
+    <div id="msgbox">Hello</div>
+  </body>
+  <script>
+    let url = "https://api.github.com/users/VaishMittal";
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("btn").onclick = function () {
+          document.getElementById("msgbox").innerHTML = `
+            <p><strong>Username:</strong> ${data.login}</p>
+            <p><strong>ID:</strong> ${data.id}</p>
+            <p><strong>Avatar:</strong> <img src="${data.avatar_url}" alt="Avatar" width="100"></p>
+            <p><strong>Repositories URL:</strong> <a href="${data.repos_url}" target="_blank">${data.repos_url}</a></p>
+          `;
+        };
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  </script>
+</html>

@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+  </head>
+  <body>
+    <div id="box1">
+      <h1>Currency Converter</h1>
+      <label for="cur1">Amount :</label>
+      <input id="cur1" value="2" placeholder="enter your currency" />
+      <select id="sel1">
+        <option id="opt1">USD</option>
+      </select>
+      <br />
+      <br />
+      <label for="cur2">Amount :</label>
+      <input id="cur2" placeholder="converted currency" readonly/>
+      <select id="sel2">
+        <!-- <option id="opt2">TRY</option> -->
+      </select>
+      <br />
+      <br />
+      <button id="convert">Convert</button>
+    </div>
+  </body>
+  <script>
+    function convertCur() {
+      let api = "https://api.exchangerate-api.com/v4/latest/USD";
+      fetch(api)
+        .then((data) => data.json())
+        .then((data) => {
+          console.log(data);
+          const option1 = document.getElementById("opt1");
+          option1.text = data.base;
+          const sel1 = document.getElementById("sel1");
+          const sel2 = document.getElementById("sel2");
+          sel2.innerHTML="";
+
+          const keys=Object.keys(data.rates)
+          for (let i = 1; i < keys.length; i++) {
+            let sel = document.getElementById("sel2");
+            let opt = document.createElement("option");
+            opt.text = keys[i];
+            sel2.appendChild(opt);
+          }
+
+          let c1 = document.getElementById("cur1").value;
+          console.log(c1);
+          let selcu1 = sel1.value;
+          let selcur2 = sel2.value;
+          let c2 = (c1 * data.rates[selcur2])/data.rates[selcur1];
+        
+
+          document.getElementById("cur2").value = c2;
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+
+    document.getElementById("convert").onclick = convertCur;
+  </script>
+</html>
